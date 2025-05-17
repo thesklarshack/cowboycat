@@ -154,6 +154,34 @@
       color: white;
       text-decoration: underline;
     }
+
+    #rotateWarning {
+      display: none;
+    }
+
+    @media (orientation: landscape) and (max-width: 768px) {
+      #rotateWarning {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: black;
+        color: white;
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 2em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 999;
+      }
+    }
+
+    @media (orientation: portrait), (min-width: 769px) {
+      #rotateWarning {
+        display: none;
+      }
+    }
   </style>
 </head>
 <body>
@@ -179,7 +207,8 @@
   </div>
 
   <div id="blurInvertOverlay"></div>
-  <div id="versionText">VERSION 0.5<br><br>MADE WITH LOVE BY A 13 YEAR OLD FROM THE PHILIPPINES!</div>
+  <div id="versionText">VERSION 0.6 temp rotate warning</div>
+  <div id="rotateWarning">rotate your device :)</div>
 
   <script>
     const d = new Date();
@@ -207,11 +236,9 @@
 
     mainBtn.onclick = () => {
       img.classList.remove("hidden");
-      // delay hiding content until banner returns
       setTimeout(() => {
         content.style.display = "none";
-      }, 500); // 0.5 seconds matches banner animation
-
+      }, 500);
       mainBtn.style.opacity = "0.15";
       moreBtn.style.opacity = "1";
       isMoreActive = false;
