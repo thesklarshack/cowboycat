@@ -155,8 +155,7 @@
       text-decoration: underline;
     }
 
-    #rotateWarning {
-      display: none;
+    #rotateOverlay {
       position: fixed;
       top: 0;
       left: 0;
@@ -164,28 +163,33 @@
       height: 100%;
       backdrop-filter: blur(15px);
       filter: invert(1);
-      font-family: system-ui, sans-serif;
-      font-size: 36px;
-      font-weight: 900;
-      text-transform: uppercase;
-      color: white;
-      text-align: center;
-      justify-content: center;
+      display: none;
       align-items: center;
-      z-index: 999;
-      padding: 40px;
-      transition: none;
+      justify-content: center;
+      z-index: 1000;
+      pointer-events: none;
+    }
+
+    #rotateText {
+      font-family: system-ui, sans-serif;
+      font-weight: 900;
+      font-size: 4em;
+      text-transform: uppercase;
+      text-align: center;
+      pointer-events: none;
     }
 
     @media screen and (orientation: portrait) and (max-width: 768px) {
-      #rotateWarning {
+      #rotateOverlay {
         display: flex;
       }
     }
   </style>
 </head>
 <body>
-  <div id="rotateWarning">rotate your phone yo!</div>
+  <div id="rotateOverlay">
+    <div id="rotateText">ROTATE YOUR PHONE YO!</div>
+  </div>
 
   <header>
     <div class="left">
@@ -209,7 +213,7 @@
   </div>
 
   <div id="blurInvertOverlay"></div>
-  <div id="versionText">VERSION 0.7 temp</div>
+  <div id="versionText">VERSION 0.8 temp</div>
 
   <script>
     const d = new Date();
@@ -288,5 +292,6 @@
   </script>
 </body>
 </html>
+
 
 
